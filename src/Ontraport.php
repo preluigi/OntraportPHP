@@ -25,6 +25,11 @@
 		 */
 		protected $version;
 		/**
+		 * [$namespace description]
+		 * @var [type]
+		 */
+		protected $namespace;
+		/**
 		 * [__construct description]
 		 * @param [type] $app_id  [description]
 		 * @param [type] $app_key [description]
@@ -33,6 +38,7 @@
 			$this->set_app_id ( $app_id );
 			$this->set_app_key ( $app_key );
 			$this->set_version ( 1 );
+			$this->set_namespace ( 'Ontraport' );
 			$this->default_endpoints ();
 		}
 
@@ -76,6 +82,14 @@
 		}
 
 		/**
+		 * [set_namespace description]
+		 * @param [type] $ns [description]
+		 */
+		public function set_namespace ( $ns ) {
+			$this->namespace = $ns;
+		}
+
+		/**
 		 * [get_version description]
 		 * @return [type] [description]
 		 */
@@ -108,6 +122,14 @@
 			if ( $_id != '' && isset ( $this->endpoint [ $_id ] ) )
 				return $this->endpoint [ $_id ];
 			return $this->endpoint;
+		}
+
+		/**
+		 * [get_namespace description]
+		 * @return [type] [description]
+		 */
+		public function get_namespace () {
+			return $this->namespace;
 		}
 
 		/**
@@ -192,10 +214,11 @@
 		 */
 		public function __get ( $name ) {
 			try {
-				$name = 'Ontraport\\' . $name;
+				$name = $this->get_namespace () . '\\' . $name;
 				return new $name( $this );
 			} catch ( Exception $e ) {
 				throw $e;
 			}
 		}
+	}
 ?>

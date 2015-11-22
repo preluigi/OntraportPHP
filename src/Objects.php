@@ -29,56 +29,56 @@
 			}
 
 			$params = array (
-				'objectID' => self::$object_id,
+				'objectID' => static::$object_id,
 				'condition' => $condition
 			);
 
-			return json_decode ( $this->ontraport->send_request ( self::$multiple_endpoint, 'get', $params ) );
+			return json_decode ( $this->ontraport->send_request ( static::$multiple_endpoint, 'get', $params ) );
 		}
 
 		public function create ( $object ) {
 			$params = array (
-				'objectID' => self::$object_id
+				'objectID' => static::$object_id
 			);
 
 			$object = json_decode ( json_encode ( $object ), true );
 
 			$params = array_merge ( $params, $object );
 
-			return json_decode ( $this->ontraport->send_request ( self::$multiple_endpoint, 'post', $params ) );
+			return json_decode ( $this->ontraport->send_request ( static::$multiple_endpoint, 'post', $params ) );
 		}
 
 		public function read ( $id ) {
 			$params = array (
-				'objectID' => self::$object_id,
+				'objectID' => static::$object_id,
 				'id' => $id
 			);
 
-			return json_decode ( $this->ontraport->send_request ( self::$endpoint, 'get', $params ) );
+			return json_decode ( $this->ontraport->send_request ( static::$endpoint, 'get', $params ) );
 		}
 
 		public function get ( $ids = array () ) {
 			$params = array (
-				'objectID' => self::$object_id
+				'objectID' => static::$object_id
 			);
 
 			if ( count ( $ids ) > 1 ) {
 				$params [ 'ids' ] = implode ( ',', $ids );
 			}
 
-			return json_decode ( $this->ontraport->send_request ( self::$multiple_endpoint, 'get', $params ) );
+			return json_decode ( $this->ontraport->send_request ( static::$multiple_endpoint, 'get', $params ) );
 		}
 
 		public function update ( $object ) {
 			$params = array (
-				'objectID' => self::$object_id
+				'objectID' => static::$object_id
 			);
 
 			$object = json_decode ( json_encode ( $object ), true );
 
 			if ( isset ( $object [ 'id' ] ) ) {
 				$params = array_merge ( $params, $object );
-				return json_decode (  $this->ontraport->send_request ( self::$multiple_endpoint, 'put', $params ) );
+				return json_decode (  $this->ontraport->send_request ( static::$multiple_endpoint, 'put', $params ) );
 			} else
 				return false;
 		}

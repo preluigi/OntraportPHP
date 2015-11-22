@@ -76,5 +76,16 @@
       $ontraport = new Ontraport ( APP_ID, APP_KEY );
       $result = $ontraport->Contacts->delete ( $id );
     }
+
+    public function testProductCreate () {
+      $ontraport = new Ontraport ( APP_ID, APP_KEY );
+      $result = $ontraport->Products->create (
+        array (
+          'name' => 'An awesome product!',
+          'price' => 119.95
+        )
+      );
+      $this->assertObjectHasAttribute ( 'id', $result->data );
+    }
   }
 ?>
