@@ -1,0 +1,25 @@
+{
+    "name": "preluigi/ontraport",
+    "type": "library",
+    "description": "Ontrport PHP Rest API library",
+    "keywords": ["ontraport","rest","php"],
+    "homepage": "https://github.com/preluigi/OntraportPHP",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Luigi Pressello",
+            "email": "luigi@pressello.com",
+            "homepage": "http://pressello.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "phpunit/phpunit": ">=5.0.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ontraport\\": "src"
+        }
+    }
+}
