@@ -4,6 +4,7 @@
 	class Objects {
 		protected static $endpoint = 'object';
 		protected static $multiple_endpoint = 'objects';
+		protected static $tag_endpoint = 'objects_tag';
 		protected $ontraport;
 		protected static $object_id = 0;
 
@@ -85,6 +86,26 @@
 
 		public function delete ( $id ) {
 
+		}
+
+		protected add_tag_to_object ( $ids, $tag_ids ) {
+			$params = array (
+				'objectID' => static::$object_id,
+				'add_list' => implode ( ',', $tag_id ),
+				'ids' => implode ( ',', $ids )
+			);
+
+			return json_decode (  $this->ontraport->send_request ( static::$tag_endpoint, 'put', $params ) );
+		}
+
+		protected remove_tag_to_object ( $ids, $tag_ids ) {
+			$params = array (
+				'objectID' => static::$object_id,
+				'remove_list' => implode ( ',', $tag_id ),
+				'ids' => implode ( ',', $ids )
+			);
+
+			return json_decode (  $this->ontraport->send_request ( static::$tag_endpoint, 'delete', $params ) );
 		}
 
 	}
