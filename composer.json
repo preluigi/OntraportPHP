@@ -1,7 +1,7 @@
 {
     "name": "preluigi/ontraport",
     "type": "library",
-    "description": "Ontrport PHP Rest API library",
+    "description": "Ontraport PHP Rest API library",
     "keywords": ["ontraport","rest","php"],
     "homepage": "https://github.com/preluigi/OntraportPHP",
     "license": "Apache 2.0",
