@@ -176,6 +176,8 @@ $ontraport->set_endpoint ( $my_endpoints, true ); // Will substitute all endpoin
 
 ```
 
+Note that custom defined endpoints will **not** use the API version attribute to generate the called endpoint, so you need to  pass the complete endpoint URI.
+
 ## How the library works
 Before you start diving into more advanced OntraportPHP usages I bet you want to see in detail how the library works.
 So here's the answer:
