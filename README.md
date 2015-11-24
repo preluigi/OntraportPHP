@@ -124,6 +124,58 @@ Every Object Type has the following default methods
 * ``` update ( object $object ) ```
 * ``` delete ( int $id ) ```
 
+## Changing the API version
+By default the library uses the version 1 of the REST API (which is the only one available at this moment).
+You can change the version to fit your needs (???) by using the Ontraport\Ontraport->set_version method:
+
+```php
+$ontraport = new Ontraport\Ontraport ( 'my_app_id', 'my_app_key' );
+$ontraport->set_version ( '2.1.2' );
+```
+
+## Changing the default endpoints
+By default the library initializes the following endpoints:
+
+```php
+array (
+  'object' => "https://api.ontraport.com/1/object",
+  'objects' => "https://api.ontraport.com/1/objects",
+  'objects_meta' => "https://api.ontraport.com/1/objects/meta",
+  'objects_tag' => "https://api.ontraport.com/1/objects/tag",
+  'form' => "https://api.ontraport.com/1/form",
+  'message' => "https://api.ontraport.com/1/message",
+  'task_cancel' => "https://api.ontraport.com/1/task/cancel",
+  'task_complete' => "https://api.ontraport.com/1/task/complete",
+  'transaction_processmanual' => "https://api.ontraport.com/1/transaction/processManual",
+  'transaction_refund' => "https://api.ontraport.com/1/transaction/refund",
+  'transaction_converttodecline' => "https://api.ontraport.com/1/transaction/convertToDecline",
+  'transaction_converttocollections' => "https://api.ontraport.com/1/transaction/convertToCollections",
+  'transaction_void' => "https://api.ontraport.com/1/transaction/void",
+  'transaction_voidpurchase' => "https://api.ontraport.com/1/transaction/voidPurchase",
+  'transaction_reruncommission' => "https://api.ontraport.com/1/transaction/rerunCommission",
+  'transaction_markpaid' => "https://api.ontraport.com/1/transaction/markPaid",
+  'transaction_rerun' => "https://api.ontraport.com/1/transaction/rerun",
+  'transaction_writeoff' => "https://api.ontraport.com/1/transaction/writeOff",
+  'transaction_order' => "https://api.ontraport.com/1/transaction/order",
+  'transaction_resendinvoice' => "https://api.ontraport.com/1/transaction/resendInvoice"
+);
+```
+You can change one or all of those endpoints by using the Ontraport\Ontraport->set_endpoint method:
+
+```php
+$ontraport = new Ontraport\Ontraport ( 'my_app_id', 'my_app_key' );
+
+$my_endpoints = array (
+  'object' => "my_custom_endpoint_for_single_object",
+  'objects' => "my_custom_endpoint_for_multiple_objects",
+);
+
+$ontraport->set_endpoint ( $my_endpoints ); // Will only change the endpoints defined in $my_endpoints
+
+$ontraport->set_endpoint ( $my_endpoints, true ); // Will substitute all endpoints with only those defined in $my_endpoints
+
+```
+
 ## How the library works
 Before you start diving into more advanced OntraportPHP usages I bet you want to see in detail how the library works.
 So here's the answer:
