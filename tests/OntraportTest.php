@@ -1,8 +1,12 @@
 <?php
   namespace Ontraport;
 
-  define ( 'APP_ID', '2_27801_TqmG82YGz' );
-  define ( 'APP_KEY', 'JRQ2GY0tvmb9M0Y' );
+  /**
+   * The following include load the needed credentials configuration.
+   * See config.sample.php for instructions
+   */
+  include ( __DIR__ . '/config.php' );
+
 
   class OntraportTest extends \PHPUnit_Framework_TestCase {
     /**
